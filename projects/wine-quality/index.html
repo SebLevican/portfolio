@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Analysis</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../projects.html">Projects</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <header>
+        <h1>Wine Quality Analysis</h1>
+    </header>
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This project was developed as a hands-on practice to enhance my MLOps skills and reinforce machine learning knowledge. 
+            The focus was not primarily on achieving the best predictive results but rather on showcasing how to deploy and operationalize 
+            a machine learning pipeline using a known dataset. By using a widely recognized dataset, I could concentrate on the operational aspects 
+            and effectively demonstrate these skills in practice.
+        </p>
+    </section>
+    <section>
+        <h2>Technologies Used</h2>
+        <p>
+            The following tools and technologies were utilized to implement and operationalize the machine learning pipeline:
+        </p>
+        <ul>
+            <li><strong>Python</strong> - The primary language for data processing, analysis, and model implementation.</li>
+            <li><strong>Scikit-learn</strong> - Used for machine learning algorithms and model evaluation.</li>
+            <li><strong>Pandas</strong> - For data manipulation and preprocessing.</li>
+            <li><strong>Matplotlib / Seaborn</strong> - For data visualization and exploratory data analysis (EDA).</li>
+            <li><strong>Docker</strong> - Used for containerizing the project and ensuring consistency across environments.</li>
+            <li><strong>MLflow</strong> - For tracking and managing the machine learning models and experiments.</li>
+            <li><strong>Dagshub</strong> - For version control and collaboration on data science and machine learning projects, particularly for tracking models, data, and experiments.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Dataset Overview</h2>
+        <p>
+            The dataset used for this project was sourced from the UCI Machine Learning Repository. It contains 
+            <strong>1,599 records</strong> with <strong>12 columns</strong>, which describe the physicochemical properties of red wines 
+            and their corresponding quality ratings.
+        </p>
+        <p>Below is the composition of the dataset:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>fixed acidity</td>
+                    <td>Tartaric acid levels in g/dm³</td>
+                </tr>
+                <tr>
+                    <td>volatile acidity</td>
+                    <td>Acetic acid levels in g/dm³</td>
+                </tr>
+                <tr>
+                    <td>citric acid</td>
+                    <td>Citric acid content in g/dm³</td>
+                </tr>
+                <tr>
+                    <td>residual sugar</td>
+                    <td>Sugar remaining after fermentation</td>
+                </tr>
+                <tr>
+                    <td>chlorides</td>
+                    <td>Salt content in g/L</td>
+                </tr>
+                <tr>
+                    <td>free sulfur dioxide</td>
+                    <td>Free SO₂ in mg/L</td>
+                </tr>
+                <tr>
+                    <td>total sulfur dioxide</td>
+                    <td>Total SO₂ in mg/L</td>
+                </tr>
+                <tr>
+                    <td>density</td>
+                    <td>Density of the wine in g/cm³</td>
+                </tr>
+                <tr>
+                    <td>pH</td>
+                    <td>Acidity level of the wine</td>
+                </tr>
+                <tr>
+                    <td>sulphates</td>
+                    <td>Potassium sulphate levels in g/L</td>
+                </tr>
+                <tr>
+                    <td>alcohol</td>
+                    <td>Alcohol content in % by volume</td>
+                </tr>
+                <tr>
+                    <td>quality</td>
+                    <td>Wine quality score (0–10)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            The <strong>quality</strong> column is the target variable, which represents the perceived quality of the wine, scored by wine tasters.
+        </p>
+    </section>
+    <section>
+        <h2>Project Structure & Tools</h2>
+        <p>
+            For this project, I used a <code>template.py</code> file that automates the creation of the project structure, generating all the necessary files and folders to kickstart the workflow efficiently. This allowed me to focus on the key aspects of the pipeline, such as data ingestion, validation, and modeling. It also ensures that the project is easily scalable and maintainable.
+        </p>
+    </section>
+    <section>
+        <h2>End to End Data Science Project</h2>
+        <h3>Workflows - ML Pipeline</h3>
+        <ol>
+            <li><strong>Data Ingestion:</strong> Collecting and loading data from various sources.</li>
+            <li><strong>Data Validation:</strong> Verifying the quality and consistency of the data.</li>
+            <li><strong>Data Transformation - Feature Engineering, Data Preprocessing:</strong> Transforming and preprocessing data to make it suitable for the model.</li>
+            <li><strong>Model Trainer:</strong> Training the model using selected algorithms.</li>
+            <li><strong>Model Evaluation - MLFlow, Dagshub:</strong> Evaluating the model's performance using tools like MLFlow and tracking experiments with Dagshub.</li>
+        </ol>
+    </section>
+    <section>
+        <h3>Workflows</h3>
+        <ol>
+            <li>Update <code>config.yaml</code> - Modify the project's main configuration.</li>
+            <li>Update <code>schema.yaml</code> - Update the data schemas to align with the model requirements.</li>
+            <li>Update <code>params.yaml</code> - Adjust the necessary parameters for model configuration.</li>
+            <li>Update the entity - Define and update the key entities in the workflow.</li>
+            <li>Update the configuration manager in <code>src/config</code> - Modify the configuration files for the pipeline.</li>
+            <li>Update the components - Refine and adjust the components of the model and data.</li>
+            <li>Update the pipeline - Finalize and configure the complete workflow.</li>
+            <li>Update <code>main.py</code> - Implement the final details of the workflow in the main file.</li>
+        </ol>
+    </section>
+    <section>
+    <h2>Project Overview</h2>
+    <p>
+        At the beginning of the project, I utilized the <strong>dataclass</strong> library to define the inputs for each stage of the pipeline. 
+        This allowed for easy configuration management across the entire process, with dedicated configurations for each stage, such as <strong>data_ingestion_config</strong>, <strong>data_validation_config</strong>, 
+        <strong>data_transformation_config</strong>, among others. This approach ensures modularity and flexibility for potential future expansions.
+    </p>
+    <p>
+        Moving into the first stage, <strong>Data Ingestion</strong>, I leveraged these configurations to automatically retrieve the dataset from a remote source. 
+        I also implemented a data extraction process that involved downloading and unzipping the dataset, ensuring that the raw data was ready for further processing.
+    </p>
+    <p>
+        In the subsequent <strong>Data Validation</strong> stage, I performed several crucial checks to ensure the quality and integrity of the data. 
+        This step involved validating that all required columns were present, confirming correct data types, and identifying any potential anomalies, such as missing values or outliers. 
+        These validations are essential in real-world projects, as they ensure that the data is clean and reliable for model training.
+    </p>
+    <p>
+        The <strong>Data Transformation</strong> phase was straightforward, as the dataset was well-structured and did not require extensive preprocessing. 
+        However, I did implement basic transformations, such as handling missing values and scaling features. 
+        If the dataset had been imbalanced or contained more complex features, additional steps such as class balancing or feature engineering would have been necessary.
+    </p>
+    <p>
+        In the <strong>Model Training</strong> stage, I employed an <strong>ElasticNet</strong> regression model, chosen for its ability to handle both regularization and feature selection. 
+        The model was trained on the dataset to predict wine quality, and hyperparameter tuning was performed to achieve optimal results.
+    </p>
+    <p>
+        Finally, in the <strong>Model Evaluation</strong> stage, I assessed the model's performance using relevant evaluation metrics. 
+        I tracked the experiment using <strong>MLflow</strong>, allowing me to monitor the training process, log metrics, and compare different models. 
+        This ensures that the model is not only performing well but also that the results are reproducible and can be easily shared with stakeholders.
+    </p>
+    <p>
+        The entire pipeline was automated using <strong>pipelines</strong>, which allowed me to structure the process from ingestion to evaluation in a way that is efficient and scalable. 
+        This modular approach is essential for creating reproducible, maintainable, and transparent machine learning workflows.
+    </p>
+</section>
+</body>
+</html>
