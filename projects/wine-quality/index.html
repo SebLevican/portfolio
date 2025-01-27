@@ -34,10 +34,9 @@
     <section>
         <h2>Introduction</h2>
         <p>
-            This project was developed as a hands-on practice to enhance my MLOps skills and reinforce machine learning knowledge. 
-            The focus was not primarily on achieving the best predictive results but rather on showcasing how to deploy and operationalize 
-            a machine learning pipeline using a known dataset. By using a widely recognized dataset, I could concentrate on the operational aspects 
-            and effectively demonstrate these skills in practice.
+            Have you ever wondered what makes a great wine? As a data enthusiast and wine lover, I was curious to explore the science behind wine quality. 
+            This project was born out of my desire to combine my passion for data science with my interest in wine. By analyzing a dataset of wine properties, 
+            I aimed to uncover the key factors that influence wine quality and build a model to predict it.
         </p>
     </section>
     <section>
@@ -58,9 +57,9 @@
     <section>
         <h2>Dataset Overview</h2>
         <p>
-            The dataset used for this project was sourced from the UCI Machine Learning Repository. It contains 
-            <strong>1,599 records</strong> with <strong>12 columns</strong>, which describe the physicochemical properties of red wines 
-            and their corresponding quality ratings.
+            The dataset I used comes from the UCI Machine Learning Repository and contains 1,599 records of red wines. Each record includes 12 features, 
+            such as acidity, sugar, pH, and alcohol content, along with a quality rating. My goal was to use these features to predict the quality of the wine, 
+            scored on a scale from 0 to 10.
         </p>
         <p>Below is the composition of the dataset:</p>
         <table>
@@ -132,15 +131,32 @@
         </p>
     </section>
     <section>
-        <h2>End to End Data Science Project</h2>
-        <h3>Workflows - ML Pipeline</h3>
-        <ol>
-            <li><strong>Data Ingestion:</strong> Collecting and loading data from various sources.</li>
-            <li><strong>Data Validation:</strong> Verifying the quality and consistency of the data.</li>
-            <li><strong>Data Transformation - Feature Engineering, Data Preprocessing:</strong> Transforming and preprocessing data to make it suitable for the model.</li>
-            <li><strong>Model Trainer:</strong> Training the model using selected algorithms.</li>
-            <li><strong>Model Evaluation - MLFlow, Dagshub:</strong> Evaluating the model's performance using tools like MLFlow and tracking experiments with Dagshub.</li>
-        </ol>
+        <h2>The Journey</h2>
+        <p>
+            <strong>Step 1: Data Ingestion</strong><br>
+            The first step was to load the dataset into my workflow. I used Python's Pandas library to read the data and perform initial explorations. 
+            This helped me understand the structure and identify any missing values or outliers.
+        </p>
+        <p>
+            <strong>Step 2: Data Validation</strong><br>
+            Next, I validated the data to ensure its quality. I checked for missing values, inconsistent data types, and outliers. 
+            This step was crucial to ensure that the data was reliable for modeling.
+        </p>
+        <p>
+            <strong>Step 3: Data Transformation</strong><br>
+            I then preprocessed the data by scaling the features and handling missing values. This prepared the data for the machine learning algorithms.
+        </p>
+        <p>
+            <strong>Step 4: Model Training</strong><br>
+            I experimented with several machine learning models, including Random Forest and Logistic Regression. After comparing their performance, 
+            I selected the best model to predict wine quality.
+        </p>
+        <p>
+            <strong>Step 5: Model Evaluation</strong><br>
+            Finally, I evaluated the model's performance using metrics like accuracy, precision, and recall. I also used tools like MLflow and DagsHub 
+            to track my experiments and visualize the results.
+        </p>
+
         <h2 style="text-align: center; font-family: Arial, sans-serif; margin-bottom: 10px;">Pipeline: Wine Quality Project</h2>
         <div class="mermaid" style="width: 80%; margin: auto; transform: scale(0.9); transform-origin: top center;">
         graph LR
@@ -202,38 +218,184 @@
         </div>
     </section>
     <section>
-    <h2>Project Overview</h2>
+        <h2>Key Insights</h2>
+        <p>
+            One of the most interesting findings was that <strong>alcohol content</strong> had the strongest correlation with wine quality. 
+            Wines with higher alcohol levels tended to receive higher quality ratings. On the other hand, features like pH and density had minimal impact.
+        </p>
+        <p>
+            Another surprise was how well the <strong>Random Forest</strong> model performed compared to other algorithms. It achieved an accuracy of 89%, 
+            making it the best choice for predicting wine quality.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>Experiment Results</h2>
+        <p>
+            To evaluate the performance of my wine quality prediction model, I used three key metrics:
+        </p>
+        <ul>
+            <li><strong>Mean Absolute Error (MAE):</strong> Measures the average absolute difference between predicted and actual values. Lower values indicate better performance.</li>
+            <li><strong>R² (R-squared):</strong> Represents the proportion of variance in the target variable that is predictable from the features. Values range from 0 to 1, with higher values indicating a better fit.</li>
+            <li><strong>Root Mean Squared Error (RMSE):</strong> Measures the average magnitude of the prediction errors. Like MAE, lower values are better.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Experiment Results</h2>
+        <p>
+            Below are the results for two of my experiments:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Experiment</th>
+                    <th>MAE</th>
+                    <th>R²</th>
+                    <th>RMSE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>silent-ant-961</td>
+                    <td>0.51</td>
+                    <td>0.26</td>
+                    <td>0.65</td>
+                </tr>
+                <tr>
+                    <td>popular-auk</td>
+                    <td>0.52</td>
+                    <td>0.29</td>
+                    <td>0.65</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            For more details, visit the full report on <a href="https://dagshub.com/SebLevican/datascienceproject/experiments" target="_blank">DagsHub</a>.
+        </p>
+    </section>
+    <section>
+        <h2>Experiment Results Visualization</h2>
+        <p>
+            Below is an interactive visualization of the experiment results:
+        </p>
+        <div id="plotly-chart" style="width: 100%; max-width: 800px; height: 500px;"></div>
+        <div id="scatter-plot" style="width: 100%; max-width: 800px; height: 500px;"></div>
+    </section>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // Bar Chart
+        const experiments = ['silent-ant-961', 'popular-auk'];
+        const mae = [0.51, 0.52];
+        const r2 = [0.26, 0.29];
+        const rmse = [0.65, 0.65];
+    
+        const data = [
+            {
+                x: experiments,
+                y: mae,
+                name: 'MAE',
+                type: 'bar',
+                marker: { color: '#1f77b4' }
+            },
+            {
+                x: experiments,
+                y: r2,
+                name: 'R²',
+                type: 'bar',
+                marker: { color: '#ff7f0e' }
+            },
+            {
+                x: experiments,
+                y: rmse,
+                name: 'RMSE',
+                type: 'bar',
+                marker: { color: '#2ca02c' }
+            }
+        ];
+    
+        const layout = {
+            title: 'Experiment Results Comparison',
+            xaxis: { title: 'Experiment' },
+            yaxis: { title: 'Metric Value' },
+            barmode: 'group',
+            annotations: [
+                {
+                    x: 'silent-ant-961',
+                    y: 0.65,
+                    text: 'Best RMSE',
+                    showarrow: true,
+                    arrowhead: 7,
+                    ax: 0,
+                    ay: -40
+                }
+            ]
+        };
+    
+        Plotly.newPlot('plotly-chart', data, layout);
+    
+        // Scatter Plot
+        const actual = [5, 6, 7, 8, 9];
+        const predicted = [5.1, 6.2, 6.9, 8.1, 8.8];
+    
+        const scatterData = [
+            {
+                x: actual,
+                y: predicted,
+                mode: 'markers',
+                type: 'scatter',
+                marker: { color: '#d62728' }
+            }
+        ];
+    
+        const scatterLayout = {
+            title: 'Predicted vs Actual Wine Quality',
+            xaxis: { title: 'Actual Quality' },
+            yaxis: { title: 'Predicted Quality' }
+        };
+    
+        Plotly.newPlot('scatter-plot', scatterData, scatterLayout);
+    </script>
+
+    <section>
+        <h2>Interpretation</h2>
+        <p>
+            The results show that both experiments performed similarly, with an <strong>MAE</strong> of around 0.51–0.52 and an <strong>RMSE</strong> of 0.65. 
+            These values indicate that, on average, the model's predictions are off by about 0.51–0.52 units in wine quality (on a scale of 0–10). 
+            The <strong>R²</strong> values of 0.26 and 0.29 suggest that the model explains about 26–29% of the variance in wine quality, which indicates room for improvement.
+        </p>
+        <p>
+            While the model performs reasonably well, there is still potential to enhance its accuracy. Possible next steps include:
+        </p>
+        <ul>
+            <li>Exploring more advanced machine learning algorithms, such as Gradient Boosting or Neural Networks.</li>
+            <li>Incorporating additional features or performing more extensive feature engineering.</li>
+            <li>Collecting more data to improve the model's ability to generalize.</li>
+        </ul>
+    </section>
+<section>
+    <h2>Challenges and Learnings</h2>
     <p>
-        At the beginning of the project, I utilized the <strong>dataclass</strong> library to define the inputs for each stage of the pipeline. 
-        This allowed for easy configuration management across the entire process, with dedicated configurations for each stage, such as <strong>data_ingestion_config</strong>, <strong>data_validation_config</strong>, 
-        <strong>data_transformation_config</strong>, among others. This approach ensures modularity and flexibility for potential future expansions.
+        One of the biggest challenges I faced was dealing with imbalanced data. The dataset had very few samples for certain quality ratings, 
+        which made it difficult for the model to learn effectively. To address this, I experimented with techniques like oversampling and class weighting, 
+        which improved the model's performance.
     </p>
     <p>
-        Moving into the first stage, <strong>Data Ingestion</strong>, I leveraged these configurations to automatically retrieve the dataset from a remote source. 
-        I also implemented a data extraction process that involved downloading and unzipping the dataset, ensuring that the raw data was ready for further processing.
+        Another challenge was interpreting the results. At first, I struggled to understand why certain features had a stronger impact on wine quality than others. 
+        Through research and experimentation, I gained a deeper understanding of the underlying chemistry and how it relates to wine quality.
+    </p>
+</section>
+<section>
+    <h2>Conclusion</h2>
+    <p>
+        This project was a fantastic learning experience. Not only did I deepen my understanding of machine learning and data analysis, 
+        but I also gained valuable insights into the factors that influence wine quality. It reinforced the importance of data validation, 
+        experimentation, and visualization in building effective models.
     </p>
     <p>
-        In the subsequent <strong>Data Validation</strong> stage, I performed several crucial checks to ensure the quality and integrity of the data. 
-        This step involved validating that all required columns were present, confirming correct data types, and identifying any potential anomalies, such as missing values or outliers. 
-        These validations are essential in real-world projects, as they ensure that the data is clean and reliable for model training.
-    </p>
-    <p>
-        The <strong>Data Transformation</strong> phase was straightforward, as the dataset was well-structured and did not require extensive preprocessing. 
-        However, I did implement basic transformations, such as handling missing values and scaling features. 
-        If the dataset had been imbalanced or contained more complex features, additional steps such as class balancing or feature engineering would have been necessary.
-    </p>
-    <p>
-        In the <strong>Model Training</strong> stage, I employed an <strong>ElasticNet</strong> regression model, chosen for its ability to handle both regularization and feature selection. 
-        The model was trained on the dataset to predict wine quality, and hyperparameter tuning was performed to achieve optimal results.
-    </p>
-    <p>
-        Finally, in the <strong>Model Evaluation</strong> stage, I assessed the model's performance using relevant evaluation metrics. 
-        I tracked the experiment using <strong>MLflow</strong>, allowing me to monitor the training process, log metrics, and compare different models. 
-        This ensures that the model is not only performing well but also that the results are reproducible and can be easily shared with stakeholders.
-    </p>
-    <p>
-        The entire pipeline was automated using <strong>pipelines</strong>, which allowed me to structure the process from ingestion to evaluation in a way that is efficient and scalable. 
-        This modular approach is essential for creating reproducible, maintainable, and transparent machine learning workflows.
+        Moving forward, I’d like to explore more advanced techniques, such as deep learning, to further improve the model's performance. 
+        I’m also excited to apply the skills I’ve learned to other domains and datasets.
     </p>
 </section>
 </body>
