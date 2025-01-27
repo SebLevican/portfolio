@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wine Quality Analysis</title>
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+        startOnLoad: true,
+        theme: "forest",
+        flowchart: {
+            curve: "basis",
+            diagramPadding: 15,
+        }
+    });
+    </script>
 </head>
 <body>
     <header>
@@ -130,6 +141,29 @@
             <li><strong>Model Trainer:</strong> Training the model using selected algorithms.</li>
             <li><strong>Model Evaluation - MLFlow, Dagshub:</strong> Evaluating the model's performance using tools like MLFlow and tracking experiments with Dagshub.</li>
         </ol>
+        <h2 style="text-align: center; font-family: Arial, sans-serif; margin-bottom: 10px;">Pipeline: Wine Quality Project</h2>
+        <div class="mermaid" style="width: 80%; margin: auto; transform: scale(0.9); transform-origin: top center;">
+        graph LR
+            Data_Ingestion[Data Ingestion] --> Data_Validation[Data Validation]
+            Data_Validation --> Data_Transformation{Data Transformation}
+            Data_Transformation ---->|Feature Engineering| Feature_Engineering[Feature Engineering]
+            Data_Transformation ---->|Data Preprocessing| Data_Preprocessing[Data Preprocessing]
+            Feature_Engineering & Data_Preprocessing --> Model_Trainer[Model Trainer]
+            Model_Trainer --> Model_Evaluation{Model Evaluation}
+            Model_Evaluation ---->|MLFlow| MLFlow_Tracking[MLFlow Tracking] 
+            Model_Evaluation ---->|Dagshub| Dagshub_Tracking[Dagshub Tracking]
+        
+            style Data_Ingestion fill:#f9f,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+            style Data_Validation fill:#ff9,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+            style Data_Transformation fill:#9ff,stroke:#333,stroke-width:2px,rx:15,ry:15,width:200px
+            style Feature_Engineering fill:#cfc,stroke:#333,stroke-width:2px,rx:15,ry:15,width:200px
+            style Data_Preprocessing fill:#cfc,stroke:#333,stroke-width:2px,rx:15,ry:15,width:200px
+            style Model_Trainer fill:#ffc,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+            style Model_Evaluation fill:#fc9,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+            style MLFlow_Tracking fill:#ccf,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+            style Dagshub_Tracking fill:#ccf,stroke:#333,stroke-width:2px,rx:15,ry:15,width:150px
+        </div>
+        
     </section>
     <section>
         <h3>Workflows</h3>
@@ -143,6 +177,29 @@
             <li>Update the pipeline - Finalize and configure the complete workflow.</li>
             <li>Update <code>main.py</code> - Implement the final details of the workflow in the main file.</li>
         </ol>
+        <h2 style="text-align: center; font-family: Arial, sans-serif; margin-bottom: 10px;">Workflow</h2>
+        <div class="mermaid" style="width: 80%; margin: auto; transform: scale(0.9); transform-origin: top center;">
+            graph LR
+                A[Update config.yaml] --> B[Update schema.yaml]
+                B --> C[Update params.yaml]
+                C --> D[Update entity]
+                D --> E[Update the configuration manager in src/config]
+                E --> F[Update components]
+                F --> G[Update pipeline]
+                G --> H[Update main.py]
+
+                style A fill:#f9f,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style B fill:#ff9,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style C fill:#9ff,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style D fill:#cfc,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style E fill:#ffc,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style F fill:#fc9,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style G fill:#ccf,stroke:#333,stroke-width:2px,rx:15,ry:15
+                style H fill:#ccf,stroke:#333,stroke-width:2px,rx:15,ry:15
+
+
+
+        </div>
     </section>
     <section>
     <h2>Project Overview</h2>
