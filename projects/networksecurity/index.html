@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security MLOps Pipeline Project</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> </head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "forest",
+            flowchart: {
+                curve: "basis",
+                diagramPadding: 15,
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../projects.html">Projects</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Network Security MLOps Pipeline Project</h1>  </header>
+
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>In today's interconnected world, network security threats are constantly evolving, requiring sophisticated and automated solutions to protect sensitive data and infrastructure</p>
+        <p>This project implements a Machine Learning Operations (MLOps) pipeline to automate the detection of network intrusions, enabling real-time threat identification and mitigation.</p>
+        <p>By automating the entire machine learning lifecycle, from data ingestion to model deployment, this project enables rapid adaptation to new threats and improves the efficiency of security operations.</p>
+    </section>
+
+    <section id="technologies">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Python:</strong>Chosen for its rich ecosystem of machine learning libraries (scikit-learn, TensorFlow/PyTorch) and its versatility in building data processing pipelines and web applications.</li>
+            <li><strong>FastAPI:</strong> Selected for its high performance and ease of use in creating the API for model serving and retraining.</li>
+            <li><strong>Docker:</strong> Used for containerization to ensure consistent deployment across different environments and simplify scaling.</li>
+            <li><strong>GitHub Actions:</strong> CI/CD automation.</li>
+            <li><strong>DagsHub:</strong> Leveraged for experiment tracking, data versioning, and collaborative model development, facilitating reproducibility and team collaboration.</li>
+            <li><strong>MongoDB:</strong> Chosen as the database to store and manage the network traffic data due to its flexibility and scalability to handle the volume and velocity of network data</li>
+            <li><strong>GCP (Google Cloud Platform):</strong> Utilized for its robust cloud infrastructure, providing scalable resources for model training, deployment, and storage.
+                <ul>
+                    <li><strong>Artifact Registry:</strong> Used to store and manage Docker images for the application.</li>
+                    <li><strong>Compute Engine:</strong> Deployed the trained model and FastAPI application on Compute Engine instances.</li>
+                    <li><strong>Buckets:</strong> Used to store the raw network traffic data and the transformed data used for training.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="project-steps">
+        <h2>Project Steps</h2>
+        <ol>
+            <li><strong>Data Ingestion and Validation:</strong> Network traffic data was created using data base generator. Data validation involved checking for missing values, outliers, and inconsistencies. Preprocessing steps included cleaning and filtering the raw data to remove irrelevant or erroneous entries.</li>
+            <li><strong>Data Transformation:</strong> Features were engineered to represent network traffic characteristics effectively. This included one-hot encoding for categorical features, feature scaling using StandardScaler, creating features like packet size distributions, protocol usage, or flow duration. The data was then split into training, validation, and test sets.</li>
+            <li><strong>Model Training:</strong> Several models, including Random Forest, Decision Tree, Gradient Boosting, Logistic Regression, and AdaBoost, were trained and evaluated for their ability to classify network traffic as malicious or benign.  Hyperparameter tuning was performed using KNN to optimize the performance of each model.  After a comparative analysis, the model achieving the highest performance, RandomForest, was selected as the final model.  The artifacts associated with this best model, including the trained model itself, its hyperparameters, and experiment tracking data, were then committed to DagsHub, ensuring version control and facilitating reproducibility of the results</li>
+            <li><strong>Deployment via FastAPI:</strong> A RESTful API was developed using FastAPI to serve the trained model. This API allows users to submit network traffic data and receive predictions in real-time. The API also includes an endpoint for retraining the model with new data.</li>
+            <li><strong>CI/CD and Automation:</strong> GitHub Actions was configured to automate the build, test, and deployment process. Upon code changes, the pipeline automatically builds the Docker image, pushes it to Google Artifact Registry, and deploys the updated application to Google Compute Engine. This ensures continuous integration and continuous delivery.</li>
+        </ol>
+    </section>
+
+    <section id="key-features">
+        <h2>Key Features</h2>
+        <ul>
+            <p>How does your project benefit the user or solve a problem?</p>
+            <li><strong>Real-time Prediction:</strong>Provides immediate feedback on potential network threats, enabling proactive security measures.</li>
+            <li><strong>Model Retraining:</strong>Adapts to evolving threat landscapes by retraining the model with new data, ensuring long-term effectiveness.</li>
+            <li><strong>MLOps Workflow:</strong> Automates the machine learning lifecycle, reducing manual effort and improving the efficiency of security operations.</li>
+            <li><strong>Scalability:</strong>The containerized application can be easily scaled to handle large volumes of network traffic.</li>
+            <li><strong>Reproducibility:</strong>DagsHub integration ensures that all experiments, data versions, and model artifacts are tracked, making the project reproducible.</li>
+        </ul>
+    </section>
+
+    <section id="architecture">
+        <h2>Architecture</h2>
+        <p>The data architecture for this project is designed for automation and scalability.  Raw network traffic data is ingested from various sources and stored in MongoDB.  An ETL (Extract, Transform, Load) pipeline, implemented using python, extracts data from MongoDB, applies necessary transformations, and prepares it for model training.  Model training is performed using models as RandomForest, GradientBoost, etc, and the trained model is stored using Dagshub.  A continuous integration/continuous delivery (CI/CD) pipeline, built with a GithubActions it use a Runner created in compute engine instance, automates the process of containerizing the model using Docker, deploying the FastAPI application to GCP, and making it accessible to users via a RESTful API.  This architecture enables automated retraining with new data, ensuring the model adapts to evolving network threats.</p>
+        <div class="mermaid">
+            graph LR
+                A[Data Ingestion] --> B(Data Transformation)
+                B --> C{Model Training}
+                C -- New Data --> B
+                C --> D[FastAPI Deployment]
+                D --> E[User Interface]
+        </div>
+    </section>
+
+    <section id="evaluation">
+        <h2>Evaluation</h2>
+        <p>This project prioritizes the development of a practical, real-world MLOps pipeline for network security, leveraging the power and scalability of cloud computing.  The model achieved satisfactory performance (F1-score: 0.989, precision: 0.987, recall: 0.992), demonstrating the effectiveness of the chosen machine learning approach.  However, the core value of this project is the automated, cloud-based pipeline.  This pipeline streamlines the process of model training and deployment, enabling rapid iteration, continuous integration/continuous delivery (CI/CD), and efficient resource management.  It provides a foundation for future model improvements and facilitates seamless scaling to handle real-world network traffic</p>
+        <head>
+            <title>Model Evaluation Metrics - Bar Chart</title>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+          </head>
+          <body>
+          
+          <div id="metricsBarChart" style="width:100%; max-width: 600px; margin: 20px auto;"></div>
+          
+          <script>
+            var names = ["f1_score", "precision", "recall_score"];
+            var values = [0.989, 0.987, 0.992];
+          
+            var data = [{
+              x: names,
+              y: values,
+              type: 'bar',
+              marker: {
+                color: ['skyblue', 'lightgreen', 'lightcoral'] // Customize colors if you like
+              }
+            }];
+          
+            var layout = {
+              title: "<b>Model Evaluation Metrics</b>",
+              title_x: 0.5,
+              title_font: {size: 16},
+              xaxis: {
+                  title: "Metric" // Add x-axis label
+              },
+              yaxis: {
+                  title: "Value" // Add y-axis label
+              },
+              margin: { l: 50, r: 20, b: 80, t: 80 } // Adjust margins for labels
+            };
+          
+            Plotly.newPlot('metricsBarChart', data, layout);
+          </script>
+    
+    </section>
+
+    <section id="deployment">
+        <h2>Deployment</h2>
+        <p>The application is deployed on Google Compute Engine and you can access right here</p>
+         <iframe src="http://34.58.103.177:8080/docs" width="100%" height="500px"></iframe>
+    </section>
+
+
+    <section id="github">
+        <h2>GitHub Repository</h2>
+        <p>Link to your GitHub repository: <a href="https://github.com/SebLevican/networksecurity">https://github.com/SebLevican/networksecurity</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Name</p>
+    </footer>
+
+</body>
+</html>
